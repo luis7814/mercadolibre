@@ -6,13 +6,27 @@ import co.com.mercadolibre.quasar.model.ResponseMessage;
 import co.com.mercadolibre.quasar.utilities.Constants;
 import co.com.mercadolibre.quasar.utilities.MathematicalsOperation;
 import co.com.mercadolibre.quasar.utilities.Utilities;
-import org.springframework.stereotype.Service;
 
-@Service
+/*
+    Para este solución se tomo como base la TRILATERACIÓN, la cual consiste en determinar la posición de un objeto
+    conociendo la distancia y las coordenadas (en este caso los satelites).
+    Se implementó el planteamiento analítico, en donde se resolverá un sistema de ecuaciones donde va a estar la
+    información de las coordenadas y las distancias ingresadas.
+
+    kenobi = (x - x2)^2 + (y - y2)^2 = distance
+    skywalker = (x - x2)^2 + (y - y2)^2 = distance
+    sato = (x - x2)^2 + (y - y2)^2 = distance
+
+    x2 y y2, serán las coordenadas de los tres satelites
+    distance, será la distancia ingresada
+
+
+ */
+
 public class SatellitesService {
     
     private Utilities utilities;
-    
+
     public ResponseMessage topSecret(RequestMessage requestMessage, String satellite) {
         
         utilities = new Utilities();

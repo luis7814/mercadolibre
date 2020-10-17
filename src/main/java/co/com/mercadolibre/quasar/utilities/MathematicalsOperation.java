@@ -2,6 +2,11 @@ package co.com.mercadolibre.quasar.utilities;
 
 import co.com.mercadolibre.quasar.model.RequestMessage;
 
+/*
+    Metodos que permiten el calculo y resolución de los sistemas de ecuaciones.
+
+ */
+
 public class MathematicalsOperation {
 
     private String[] order2 = null;
@@ -11,13 +16,13 @@ public class MathematicalsOperation {
     public String[] quadraticEquation(Double distance, Double satelliteX, Double satelliteY) {
 
         String ax = "x";
-        Double bx = satelliteX * 2;
+        Double bx = satelliteX * Constants.NUMBER_TWO;
         Double cx = satelliteX * satelliteX;
         String ay = "y";
-        Double by = satelliteY * 2;
+        Double by = satelliteY * Constants.NUMBER_TWO;
         Double cy = satelliteY * satelliteY;
 
-        String[] equation = new String[5];
+        String[] equation = new String[Constants.POSITION_FIVE];
 
         utilities = new Utilities();
 
@@ -36,9 +41,9 @@ public class MathematicalsOperation {
         String[] subtractEquation = new String[Constants.POSITION_THREE];
 
         String position1 = "x";
-        String position2 = String.valueOf((0 - utilities.roundOutNumber(equation1[Constants.POSITION_ONE])) + utilities.roundOutNumber(equation2[Constants.POSITION_ONE]));
-        String position3 = String.valueOf((0 - utilities.roundOutNumber(equation1[Constants.POSITION_THREE])) + utilities.roundOutNumber(equation2[Constants.POSITION_THREE]));
-        String position4 = String.valueOf(0 - utilities.roundOutNumber(equation1[Constants.POSITION_FOUR]) + utilities.roundOutNumber(equation2[Constants.POSITION_FOUR]));
+        String position2 = String.valueOf((Constants.NUMBER_ZERO - utilities.roundOutNumber(equation1[Constants.POSITION_ONE])) + utilities.roundOutNumber(equation2[Constants.POSITION_ONE]));
+        String position3 = String.valueOf((Constants.NUMBER_ZERO - utilities.roundOutNumber(equation1[Constants.POSITION_THREE])) + utilities.roundOutNumber(equation2[Constants.POSITION_THREE]));
+        String position4 = String.valueOf(Constants.NUMBER_ZERO - utilities.roundOutNumber(equation1[Constants.POSITION_FOUR]) + utilities.roundOutNumber(equation2[Constants.POSITION_FOUR]));
 
         Integer positionInt = (int) Double.parseDouble(position4);
 
@@ -62,7 +67,7 @@ public class MathematicalsOperation {
         Integer quadratic = (int) Double.parseDouble(quadraticEquation[Constants.POSITION_FOUR]);
         
         Double a = utilities.roundOutNumber(subtractEquation[Constants.POSITION_ONE]) * utilities.roundOutNumber(subtractEquation[Constants.POSITION_ONE]); //Entero
-        Double by = utilities.roundOutNumber(subtractEquation[Constants.POSITION_ONE]) * 2; //Valor Y
+        Double by = utilities.roundOutNumber(subtractEquation[Constants.POSITION_ONE]) * Constants.NUMBER_TWO; //Valor Y
         Double cy = utilities.roundOutNumber(subtractEquation[Constants.POSITION_TWO]) * utilities.roundOutNumber(subtractEquation[Constants.POSITION_TWO]); //Valor y2
         Double dy = utilities.roundOutNumber(quadraticEquation[Constants.POSITION_ONE]) * utilities.roundOutNumber(subtractEquation[Constants.POSITION_ONE]); //Entero
         Double ey = utilities.roundOutNumber(quadraticEquation[Constants.POSITION_ONE]) * utilities.roundOutNumber(subtractEquation[Constants.POSITION_TWO]); //Valor y
@@ -85,12 +90,12 @@ public class MathematicalsOperation {
 
         String[] results = new String[Constants.POSITION_TWO];
 
-        Double equationX = utilities.roundOutNumber((Math.sqrt(Math.pow(valueX,2))));
-        Double equationY = utilities.roundOutNumber(equationX - ((4 * valueX2) * valueNumber));
-        Double equationZ = utilities.roundOutNumber(equationY / (2 * valueX2));
+        Double equationX = utilities.roundOutNumber((Math.sqrt(Math.pow(valueX,Constants.NUMBER_TWO))));
+        Double equationY = utilities.roundOutNumber(equationX - ((Constants.NUMBER_FOUR * valueX2) * valueNumber));
+        Double equationZ = utilities.roundOutNumber(equationY / (Constants.NUMBER_TWO * valueX2));
 
-        Double resultPositive = 0 - valueX + equationZ;
-        Double resultNegative = 0 - valueX - equationZ;
+        Double resultPositive = Constants.NUMBER_ZERO - valueX + equationZ;
+        Double resultNegative = Constants.NUMBER_ZERO - valueX - equationZ;
 
         results[Constants.POSITION_ZERO] = String.valueOf(resultPositive);
         results[Constants.POSITION_ONE] = String.valueOf(resultNegative);
@@ -114,7 +119,7 @@ public class MathematicalsOperation {
         resultConstans[Constants.POSITION_ONE] = String.valueOf(resultXNegative);
 
         //Validación no muy seguro.
-        if(utilities.roundOutNumber(resultConstans[Constants.POSITION_ZERO]) < 0) {
+        if(utilities.roundOutNumber(resultConstans[Constants.POSITION_ZERO]) < Constants.NUMBER_ZERO) {
             resultNumber = utilities.roundOutNumber(resultConstans[Constants.POSITION_ZERO]);
         }else {
             resultNumber = utilities.roundOutNumber(resultConstans[Constants.POSITION_ONE]);

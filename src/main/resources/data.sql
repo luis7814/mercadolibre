@@ -1,0 +1,1 @@
+insert into satellites (name,json)values('0','0');
